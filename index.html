@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Login API</title>
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <meta name="google-signin-client_id" content="465164978084-4trrbppfrrnfrdjk6ms0f1fh8ecrp35o.apps.googleusercontent.com">
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+</head>
+
+<body>
+    <div class="container"> 
+        <h1>Welcome to Moose Plans</h1>
+        <h1 id="userName"></h1>
+        <h1 id="userMail"></h1>
+
+        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+    </div>
+</body>
+
+<script>
+//FUNCTION For Google login. 
+    
+function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId());
+        
+    // Do not send to your backend! Use an ID token instead.
+    // Now the Name of the user is in the variable userName.
+    var userName = profile.getName();
+    var userMail = profile.getEmail();
+    document.getElementById("userName").innerHTML = userName;
+    document.getElementById("userMail").innerHTML = userMail;
+    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    console.log('')
+    }
+</script>
+
+</html>
